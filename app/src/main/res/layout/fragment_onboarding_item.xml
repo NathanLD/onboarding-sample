@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/onboarding_main_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:contentDescription="@string/image_view_onboarding_image" />
+
+            <TextView
+                android:id="@+id/onboarding_title_textview"
+                android:textAlignment="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing5"
+                android:layout_marginEnd="@dimen/spacing5"
+                android:gravity="center_horizontal"
+                android:textStyle="bold"
+                android:textSize="32sp"
+                tools:text="Titre du fragment"/>
+
+            <TextView
+                android:id="@+id/onboarding_description_textview"
+                android:textAlignment="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing4"
+                android:layout_marginStart="@dimen/spacing5"
+                android:layout_marginEnd="@dimen/spacing5"
+                android:layout_gravity="center_horizontal"
+                tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id est at metus viverra efficitur quis sit amet neque. Proin a velit magna. Suspendisse scelerisque felis id finibus rutrum. Curabitur varius porta mi, eu ornare augue dapibus eget."
+                android:paddingLeft="@dimen/spacing4"
+                android:paddingRight="@dimen/spacing4"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
