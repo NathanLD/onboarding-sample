@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">OnBoardingSample</string>
+    <string name="request_new_location">Request new location</string>
 </resources>
