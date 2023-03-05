@@ -1,7 +1,7 @@
 package com.ledigana.onboardingsample.framework.location
 
 import com.ledigana.data.DeviceLocationSource
-import com.ledigana.domain.Location
+import com.ledigana.domain.model.Location
 import java.util.*
 
 class FakeLocationSource : DeviceLocationSource {

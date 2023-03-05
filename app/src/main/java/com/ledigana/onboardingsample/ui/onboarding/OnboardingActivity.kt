@@ -4,7 +4,10 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.ledigana.data.OnboardingRepositoryImpl
 import com.ledigana.onboardingsample.R
+import com.ledigana.onboardingsample.framework.onboarding.AppPreferences
+import com.ledigana.usecases.onboarding.GetOnboardingViewedState
 import java.io.Serializable
 
 class OnboardingActivity: AppCompatActivity() {
@@ -43,6 +46,8 @@ class OnboardingActivity: AppCompatActivity() {
 
     companion object {
         const val EXTRA_ONBOARDING_LIST = "extra_onboarding_list"
+        const val SHARED_PREFERENCES_ONBOARDING_PREFIX = "onboarding"
+        val onboardingRepository = OnboardingRepositoryImpl(AppPreferences)  // Should use Dagger for DI
 
         fun start(context: Context) {
             val list = createOnboardingListToShow()
@@ -51,26 +56,35 @@ class OnboardingActivity: AppCompatActivity() {
             val intent = Intent(context, OnboardingActivity::class.java).apply {
                 putExtra(EXTRA_ONBOARDING_LIST, list as Serializable)
             }
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             context.startActivity(intent)
         }
 
         private fun createOnboardingListToShow(): List<OnboardingType> {
             val list = mutableListOf<OnboardingType>()
 
-            // TODO: Vérifier dans les préférences si l'Onboarding a déjà été vu
-            if (true) {
+            if (!onboardingHasBeenViewed(1)) {
                 list.add(OnboardingType.ONBOARDING_1)
             }
-            if (true) {
+            if (!onboardingHasBeenViewed(2)) {
                 list.add(OnboardingType.ONBOARDING_2)
             }
 
             return list
         }
 
+        private fun onboardingHasBeenViewed(index: Int) : Boolean {
+            return GetOnboardingViewedState(
+                onboardingRepository,
+                "${SHARED_PREFERENCES_ONBOARDING_PREFIX}_${index}"
+            ).invoke()
+        }
+
         private fun getOnboardingListFromIntent(intent: Intent): List<OnboardingType> {
-            val serializable = intent.extras?.getStringArrayList(EXTRA_ONBOARDING_LIST)?.map { name -> OnboardingType.valueOf(name) }
-            return serializable ?: ArrayList<OnboardingType>()
+            val serializable = intent.extras?.getSerializable(EXTRA_ONBOARDING_LIST)
+
+            @Suppress("UNCHECKED_CAST")
+            return serializable as List<OnboardingType>
         }
     }
 }

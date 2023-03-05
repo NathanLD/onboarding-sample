@@ -1,7 +1,7 @@
 package com.ledigana.onboardingsample.framework.location
 
 import com.ledigana.data.LocationPersistenceSource
-import com.ledigana.domain.Location
+import com.ledigana.domain.model.Location
 
 class InMemoryLocationPersistenceSource : LocationPersistenceSource {
 

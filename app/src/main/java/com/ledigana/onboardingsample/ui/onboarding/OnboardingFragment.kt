@@ -11,12 +11,17 @@ import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
+import com.ledigana.data.OnboardingRepositoryImpl
 import com.ledigana.onboardingsample.R
+import com.ledigana.onboardingsample.framework.onboarding.AppPreferences
 import com.ledigana.onboardingsample.ui.serializable
+import com.ledigana.usecases.onboarding.SetOnboardingAsViewed
 
 fun Int.toPx(): Int = (this * Resources.getSystem().displayMetrics.density).toInt()
 
 class OnboardingFragment : Fragment() {
+
+    private val onboardingRepository = OnboardingRepositoryImpl(AppPreferences)  // Should use Dagger for DI
 
     private lateinit var type: OnboardingType
 
@@ -201,13 +206,19 @@ class OnboardingFragment : Fragment() {
     }
 
     private fun finishOnboarding() {
-        // TODO: Set les préférences à true quand onboarding vu
-        /*when (type) {
-            OnboardingType.ONBOARDING_1 -> preferences.setHasSeenOnboarding(1, true)
-            OnboardingType.ONBOARDING_2 -> preferences.setHasSeenOnboarding(2, true)
-        }*/
+        when (type) {
+            OnboardingType.ONBOARDING_1 -> setOnboardingAsViewed(1)
+            OnboardingType.ONBOARDING_2 -> setOnboardingAsViewed(2)
+        }
         val onboardingActivity = activity as OnboardingActivity
         onboardingActivity.showNextOnboarding()
+    }
+
+    private fun setOnboardingAsViewed(index: Int) {
+        return SetOnboardingAsViewed(
+            onboardingRepository,
+            "${OnboardingActivity.SHARED_PREFERENCES_ONBOARDING_PREFIX}_${index}"
+        ).invoke()
     }
 
     fun onBackPressed(): Boolean {

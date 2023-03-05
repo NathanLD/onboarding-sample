@@ -1,31 +1,30 @@
 package com.ledigana.onboardingsample.ui
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.ledigana.onboardingsample.ui.onboarding.OnboardingActivity
-import com.ledigana.data.LocationsRepository
+import com.ledigana.data.LocationsRepositoryImpl
 import com.ledigana.onboardingsample.R
 import com.ledigana.onboardingsample.framework.location.FakeLocationSource
 import com.ledigana.onboardingsample.framework.location.InMemoryLocationPersistenceSource
 import com.ledigana.onboardingsample.ui.location.Location
 import com.ledigana.onboardingsample.ui.location.LocationsAdapter
-import com.ledigana.onboardingsample.ui.onboarding.OnboardingType
-import com.ledigana.usecases.GetLocations
-import com.ledigana.usecases.RequestNewLocation
+import com.ledigana.onboardingsample.ui.onboarding.OnboardingActivity
+import com.ledigana.usecases.location.GetLocations
+import com.ledigana.usecases.location.RequestNewLocation
+
 
 class MainActivity : AppCompatActivity(), MainPresenter.View {
 
     private val locationsAdapter = LocationsAdapter()
     private val presenter: MainPresenter
-    private val EXTRA_ONBOARDING = "extra_onboarding"
 
     init {
         val persistence = InMemoryLocationPersistenceSource()
         val deviceLocation = FakeLocationSource()
-        val locationsRepository = LocationsRepository(persistence, deviceLocation)
+        val locationsRepository = LocationsRepositoryImpl(persistence, deviceLocation)
         presenter = MainPresenter(
             this,
             GetLocations(locationsRepository),
@@ -48,20 +47,16 @@ class MainActivity : AppCompatActivity(), MainPresenter.View {
         presenter.onCreate()
 
         // Onboardings
-        val intent = Intent(this, MainActivity::class.java)
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
-        intent.putExtra(EXTRA_ONBOARDING, true)
-        startActivity(intent)
-    }
-
-    override fun onNewIntent(intent: Intent) {
-        if (intent.hasExtra(EXTRA_ONBOARDING)) {
-            var onboardingIntent = Intent(this, OnboardingActivity::class.java)
-            val types = arrayListOf(OnboardingType.ONBOARDING_1.name, OnboardingType.ONBOARDING_2.name)
-            onboardingIntent.putStringArrayListExtra(OnboardingActivity.EXTRA_ONBOARDING_LIST, types)
-            startActivity(onboardingIntent)
+        val clearPreferencesBtn = findViewById(R.id.clearPreferencesBtn) as Button
+        clearPreferencesBtn.setOnClickListener {
+            applicationContext.getSharedPreferences("OnboardingPreferences", 0).edit().clear().commit();
+            Toast.makeText(
+                this, "Preferences have been cleared. You rewatch the onboardings :)",
+                Toast.LENGTH_LONG
+            ).show()
         }
-        super.onNewIntent(intent)
+
+        OnboardingActivity.start(applicationContext)
     }
 
     override fun onDestroy() {

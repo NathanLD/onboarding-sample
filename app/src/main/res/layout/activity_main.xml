@@ -23,4 +23,12 @@
         android:layout_gravity="center_horizontal"
         android:text="@string/request_new_location" />
 
+    <Button
+        android:id="@+id/clearPreferencesBtn"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/clear_preferences" />
+
 </LinearLayout>

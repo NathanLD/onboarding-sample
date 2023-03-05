@@ -4,7 +4,7 @@ import java.math.RoundingMode
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
-import com.ledigana.domain.Location as LocationDomain
+import com.ledigana.domain.model.Location as LocationDomain
 
 data class Location(val coordinates: String, val date: String)
 

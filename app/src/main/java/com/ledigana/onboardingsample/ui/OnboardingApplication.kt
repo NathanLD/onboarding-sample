@@ -1,19 +1,11 @@
 package com.ledigana.onboardingsample.ui
 
 import android.app.Application
-import dagger.Component
-import javax.inject.Singleton
-
-@Singleton
-@Component
-interface ApplicationComponent {
-    fun inject(application: OnboardingApplication)
-}
+import com.ledigana.onboardingsample.framework.onboarding.AppPreferences
 
 class OnboardingApplication : Application() {
-    val appComponent = DaggerApplicationComponent.create()
-
     override fun onCreate() {
         super.onCreate()
+        AppPreferences.init(this)
     }
 }
