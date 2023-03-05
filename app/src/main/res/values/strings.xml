@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">OnBoardingSample</string>
     <string name="request_new_location">Request new location</string>
+    <string name="clear_preferences">Clear preferences</string>
+    <string name="common_next">Next</string>
+    <string name="common_action_finish">Finish</string>
+    <string name="onboarding_1_title_1">titre1</string>
+    <string name="onboarding_1_description_1">blabla1</string>
+    <string name="image_view_description_quit">Quit</string>
+    <string name="image_view_onboarding_image">Onboarding image</string>
 </resources>

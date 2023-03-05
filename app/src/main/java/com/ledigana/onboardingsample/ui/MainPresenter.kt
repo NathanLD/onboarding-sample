@@ -2,14 +2,13 @@ package com.ledigana.onboardingsample.ui
 
 import com.ledigana.onboardingsample.ui.location.Location
 import com.ledigana.onboardingsample.ui.location.toPresentationModel
-import com.ledigana.domain.Location as LocationDomain
-import com.ledigana.usecases.GetLocations
-import com.ledigana.usecases.RequestNewLocation
+import com.ledigana.domain.model.Location as LocationDomain
+import com.ledigana.usecases.location.GetLocations
+import com.ledigana.usecases.location.RequestNewLocation
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-
 
 class MainPresenter(
     private var view: View?,

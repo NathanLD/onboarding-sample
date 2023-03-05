@@ -1,4 +1,4 @@
-package com.ledigana.domain
+package com.ledigana.domain.model
 
 import java.util.*
 

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <ImageView
+        android:id="@+id/quitImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/spacing4"
+        android:paddingTop="@dimen/spacing4"
+        android:paddingEnd="@dimen/spacing4"
+        android:paddingBottom="@dimen/spacing4"
+        android:scaleX="2"
+        android:scaleY="2"
+        android:src="@drawable/cross"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/tutorial_grey"
+        android:contentDescription="@string/image_view_description_quit" />
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPagerContent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/spacing4"
+        app:layout_constraintBottom_toTopOf="@id/viewPagerCountDots"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/quitImageView"
+        />
+
+    <LinearLayout
+        android:id="@+id/viewPagerCountDots"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="@dimen/spacing4"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@id/viewPagerButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_max="@dimen/max_content_holder_width"
+        />
+
+    <Button
+        android:id="@+id/viewPagerButton"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/main_button_height"
+        android:layout_marginStart="@dimen/spacing5"
+        android:layout_marginEnd="@dimen/spacing5"
+        android:layout_marginBottom="@dimen/spacing6"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_max="@dimen/max_content_holder_width"
+        tools:text="@string/common_next"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
