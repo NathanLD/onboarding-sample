@@ -1,10 +1,10 @@
 package com.ledigana.onboardingsample.ui
 
-import com.ledigana.onboardingsample.ui.location.Location
-import com.ledigana.onboardingsample.ui.location.toPresentationModel
-import com.ledigana.domain.model.Location as LocationDomain
-import com.ledigana.usecases.location.GetLocations
-import com.ledigana.usecases.location.RequestNewLocation
+import com.ledigana.onboardingsample.ui.scanner.Product
+import com.ledigana.onboardingsample.ui.scanner.toPresentationModel
+import com.ledigana.domain.model.Product as ProductDomain
+import com.ledigana.usecases.scanner.GetScanProducts
+import com.ledigana.usecases.scanner.ScanNewProduct
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -12,21 +12,21 @@ import kotlinx.coroutines.withContext
 
 class MainPresenter(
     private var view: View?,
-    private val getLocations: GetLocations,
-    private val requestNewLocation: RequestNewLocation
+    private val getProducts: GetScanProducts,
+    private val scanNewProduct: ScanNewProduct
 ) {
     interface View {
-        fun renderLocations(locations: List<Location>)
+        fun renderProducts(products: List<Product>)
     }
 
     fun onCreate() = GlobalScope.launch(Dispatchers.Main) {
-        val locations = withContext(Dispatchers.IO) { getLocations() }
-        view?.renderLocations(locations.map(LocationDomain::toPresentationModel))
+        val products = withContext(Dispatchers.IO) { getProducts() }
+        view?.renderProducts(products.map(ProductDomain::toPresentationModel))
     }
 
-    fun newLocationClicked() = GlobalScope.launch(Dispatchers.Main) {
-        val locations = withContext(Dispatchers.IO) { requestNewLocation() }
-        view?.renderLocations(locations.map(LocationDomain::toPresentationModel))
+    fun scanProductClicked() = GlobalScope.launch(Dispatchers.Main) {
+        val products = withContext(Dispatchers.IO) { scanNewProduct() }
+        view?.renderProducts(products.map(ProductDomain::toPresentationModel))
     }
 
     fun onDestroy() {

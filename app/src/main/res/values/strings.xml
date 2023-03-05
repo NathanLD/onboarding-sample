@@ -1,11 +1,21 @@
 <resources>
     <string name="app_name">OnBoardingSample</string>
-    <string name="request_new_location">Request new location</string>
+    <string name="scan_new_product">Scan a new product</string>
     <string name="clear_preferences">Clear preferences</string>
     <string name="common_next">Next</string>
     <string name="common_action_finish">Finish</string>
-    <string name="onboarding_1_title_1">titre1</string>
-    <string name="onboarding_1_description_1">blabla1</string>
     <string name="image_view_description_quit">Quit</string>
     <string name="image_view_onboarding_image">Onboarding image</string>
+    <string name="onboarding_1_title_1">Onboarding, kézaco ?</string>
+    <string name="onboarding_1_description_1">Un onboarding, c\'est comme un petit tuto qui vous permet d\'afficher aux utilisateurs un aperçu d\'une nouvelle fonctionnalité de l\'application !</string>
+    <string name="onboarding_1_title_2">C\'est composé de quoi ?</string>
+    <string name="onboarding_1_description_2">Un onboarding est composé d\'une ou plusieurs pages, chacune comportant une image, un titre et un texte. On peut passer de l\'une à l\'autre en swipant ou avec le bouton.</string>
+    <string name="onboarding_1_title_3">THE END</string>
+    <string name="onboarding_1_description_3">Une fois arrivé à la dernière page, le bouton "Suivant" devient un bouton "Terminer". On peut encore revenir en arrière, mais une fois cliqué sur terminé, l\'onboarding ne réapparaitra plus jamais.</string>
+    <string name="onboarding_2_title_1">C\'est pas fini ??</string>
+    <string name="onboarding_2_description_1">Et voici un 2ème onboarding ! Eh oui, on peut les enchaîner et seuls ceux que l\'utilisateur n\'a pas encore vu s\'afficheront.</string>
+    <string name="onboarding_2_title_2">Arrêt prématuré</string>
+    <string name="onboarding_2_description_2">D\'ailleurs, il est possible d\'arrêter un onboarding sans aller au bout, en cliquant sur la petite croix en haut à gauche.</string>
+    <string name="onboarding_2_title_3">Une petite énigme</string>
+    <string name="onboarding_2_description_3">Si vous killez l\'app maintenant, sans appuyer sur le bouton… Que va t-il se passer au prochain lancement ?</string>
 </resources>

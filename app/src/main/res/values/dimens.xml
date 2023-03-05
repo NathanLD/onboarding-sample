@@ -7,4 +7,5 @@
     <dimen name="spacing6">60dp</dimen>
     <dimen name="main_button_height">50dp</dimen>
     <dimen name="max_content_holder_width">400dp</dimen>
+    <dimen name="spacing2">20dp</dimen>
 </resources>
