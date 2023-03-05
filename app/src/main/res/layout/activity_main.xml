@@ -13,15 +13,15 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/view_location_item"/>
+        tools:listitem="@layout/view_product_item"/>
 
     <Button
-        android:id="@+id/newLocationBtn"
+        android:id="@+id/scanProductBtn"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="@string/request_new_location" />
+        android:text="@string/scan_new_product" />
 
     <Button
         android:id="@+id/clearPreferencesBtn"

@@ -47,8 +47,8 @@
                 android:layout_marginEnd="@dimen/spacing5"
                 android:layout_gravity="center_horizontal"
                 tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id est at metus viverra efficitur quis sit amet neque. Proin a velit magna. Suspendisse scelerisque felis id finibus rutrum. Curabitur varius porta mi, eu ornare augue dapibus eget."
-                android:paddingLeft="@dimen/spacing4"
-                android:paddingRight="@dimen/spacing4"/>
+                android:paddingLeft="@dimen/spacing2"
+                android:paddingRight="@dimen/spacing2"/>
 
         </LinearLayout>
 

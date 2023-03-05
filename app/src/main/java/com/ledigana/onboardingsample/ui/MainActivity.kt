@@ -5,30 +5,30 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.ledigana.data.LocationsRepositoryImpl
+import com.ledigana.data.ScannedProductsRepositoryImpl
 import com.ledigana.onboardingsample.R
-import com.ledigana.onboardingsample.framework.location.FakeLocationSource
-import com.ledigana.onboardingsample.framework.location.InMemoryLocationPersistenceSource
-import com.ledigana.onboardingsample.ui.location.Location
-import com.ledigana.onboardingsample.ui.location.LocationsAdapter
+import com.ledigana.onboardingsample.framework.scanner.FakeDeviceScanner
+import com.ledigana.onboardingsample.framework.scanner.InMemoryScannedProductsPersistenceSource
+import com.ledigana.onboardingsample.ui.scanner.Product
+import com.ledigana.onboardingsample.ui.scanner.ScannedProductsAdapter
 import com.ledigana.onboardingsample.ui.onboarding.OnboardingActivity
-import com.ledigana.usecases.location.GetLocations
-import com.ledigana.usecases.location.RequestNewLocation
+import com.ledigana.usecases.scanner.GetScanProducts
+import com.ledigana.usecases.scanner.ScanNewProduct
 
 
 class MainActivity : AppCompatActivity(), MainPresenter.View {
 
-    private val locationsAdapter = LocationsAdapter()
+    private val productsAdapter = ScannedProductsAdapter()
     private val presenter: MainPresenter
 
     init {
-        val persistence = InMemoryLocationPersistenceSource()
-        val deviceLocation = FakeLocationSource()
-        val locationsRepository = LocationsRepositoryImpl(persistence, deviceLocation)
+        val persistence = InMemoryScannedProductsPersistenceSource()
+        val deviceScanner = FakeDeviceScanner()
+        val productsRepository = ScannedProductsRepositoryImpl(persistence, deviceScanner)
         presenter = MainPresenter(
             this,
-            GetLocations(locationsRepository),
-            RequestNewLocation(locationsRepository)
+            GetScanProducts(productsRepository),
+            ScanNewProduct(productsRepository)
         )
     }
 
@@ -39,10 +39,10 @@ class MainActivity : AppCompatActivity(), MainPresenter.View {
         setContentView(R.layout.activity_main)
 
         val recycler = findViewById(R.id.recycler) as RecyclerView
-        recycler.adapter = locationsAdapter
+        recycler.adapter = productsAdapter
 
-        val newLocationBtn = findViewById(R.id.newLocationBtn) as Button
-        newLocationBtn.setOnClickListener { presenter.newLocationClicked() }
+        val scanProductBtn = findViewById(R.id.scanProductBtn) as Button
+        scanProductBtn.setOnClickListener { presenter.scanProductClicked() }
 
         presenter.onCreate()
 
@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity(), MainPresenter.View {
         clearPreferencesBtn.setOnClickListener {
             applicationContext.getSharedPreferences("OnboardingPreferences", 0).edit().clear().commit();
             Toast.makeText(
-                this, "Preferences have been cleared. You rewatch the onboardings :)",
+                this, "Preferences cleared. You can now rewatch the onboardings :)",
                 Toast.LENGTH_LONG
             ).show()
         }
@@ -64,7 +64,7 @@ class MainActivity : AppCompatActivity(), MainPresenter.View {
         super.onDestroy()
     }
 
-    override fun renderLocations(locations: List<Location>) {
-        locationsAdapter.items = locations
+    override fun renderProducts(products: List<Product>) {
+        productsAdapter.items = products
     }
 }

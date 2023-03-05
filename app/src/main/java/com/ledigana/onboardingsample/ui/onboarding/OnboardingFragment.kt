@@ -135,42 +135,37 @@ class OnboardingFragment : Fragment() {
 
     private fun loadOnboarding1() {
         onboardingItems.add(OnboardingItem(
-                R.drawable.onboarding_1,
+                R.drawable.onboarding_1_1,
                 getString(R.string.onboarding_1_title_1),
                 getString(R.string.onboarding_1_description_1)
         ))
         onboardingItems.add(OnboardingItem(
-                R.drawable.onboarding_2,
-                getString(R.string.onboarding_1_title_1),
-                getString(R.string.onboarding_1_description_1)
+                R.drawable.onboarding_1_2,
+                getString(R.string.onboarding_1_title_2),
+                getString(R.string.onboarding_1_description_2)
         ))
         onboardingItems.add(OnboardingItem(
-                R.drawable.onboarding_3,
-                getString(R.string.onboarding_1_title_1),
-                getString(R.string.onboarding_1_description_1)
+                R.drawable.onboarding_1_3,
+                getString(R.string.onboarding_1_title_3),
+                getString(R.string.onboarding_1_description_3)
         ))
     }
 
     private fun loadOnboarding2() {
         onboardingItems.add(OnboardingItem(
-                R.drawable.onboarding_1,
-                getString(R.string.onboarding_1_title_1),
-                getString(R.string.onboarding_1_description_1)
+                R.drawable.onboarding_2_1,
+                getString(R.string.onboarding_2_title_1),
+                getString(R.string.onboarding_2_description_1)
         ))
         onboardingItems.add(OnboardingItem(
-                R.drawable.onboarding_1,
-                getString(R.string.onboarding_1_title_1),
-                getString(R.string.onboarding_1_description_1)
+                R.drawable.onboarding_2_2,
+                getString(R.string.onboarding_2_title_2),
+                getString(R.string.onboarding_2_description_2)
         ))
         onboardingItems.add(OnboardingItem(
-                R.drawable.onboarding_2,
-                getString(R.string.onboarding_1_title_1),
-                getString(R.string.onboarding_1_description_1)
-        ))
-        onboardingItems.add(OnboardingItem(
-                R.drawable.onboarding_3,
-                getString(R.string.onboarding_1_title_1),
-                getString(R.string.onboarding_1_description_1)
+                R.drawable.onboarding_2_3,
+                getString(R.string.onboarding_2_title_3),
+                getString(R.string.onboarding_2_description_3)
         ))
     }
 
